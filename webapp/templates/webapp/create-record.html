@@ -1,0 +1,24 @@
+{% extends 'webapp/base.html' %}
+<!-- // -->
+{%load crispy_forms_tags %}
+<!-- // -->
+{% block content %}
+<body>
+  <div class="container bg-light shadow-md p-5 form-layout">
+    <h3>Create Tickets</h3>
+    <h6>Star adding in the required datails for your record</h6>
+    <hr />
+    <br />
+
+    <form method="POST" autocomplete="off" action="">
+      {% csrf_token %} {{form|crispy}}
+      <br />
+
+      <button type="submit" class="btn btn-primary w-100 btn-black p-2">
+        Create Ticket
+      </button>
+    </form>
+  </div>
+</body>
+
+{% endblock content %}
