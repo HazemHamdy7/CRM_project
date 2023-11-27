@@ -14,11 +14,12 @@
       {% csrf_token %} {{form|crispy}}
       <br />
 
-      <button type="submit" class="btn btn-primary w-100 btn-black p-2">
-        Updated Ticket
+      <button type="submit" class="btn btn-info">
+        Updated Ticket &nbsp; <i class="fa fa-plus" aria-hidden="true"></i>
       </button>
     </form>
   </div>
+  <br />
 
   {% endblock content %}
 </body>

@@ -10,7 +10,8 @@
 <hr />
 
 <a class="btn btn-outline-primary btn-sm" href="{% url 'create_record' %}"
-  >Create a new Ticket
+  >Create a new Ticket &nbsp;
+  <i class="fa fa-plus-circle" aria-hidden="true"></i>
 </a>
 
 <hr />
@@ -47,7 +48,7 @@
       <td>{{record.province}}</td>
       <td>{{record.country}}</td>
       <td>{{record.creation_date}}</td>
-      <td><a href="{% url 'record' record.id %}"> Click here</a></td>
+      <td> <a class="btn btn-success btn-sm" href="{% url 'record' record.id %}"> <i class="fa fa-eye" aria-hidden="true"></i/a></td>
     </tr>
 
     {% endfor %} {% endif %}
