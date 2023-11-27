@@ -108,5 +108,9 @@ def singler_record(request, pk):
 
 
 @login_required(login_url='my_login')
-def delete(request, pk):
-    pass
+def delete_record(request, pk):
+
+    record = Record.objects.get(id=pk)
+    record.delete()
+
+    return redirect('dashboard')

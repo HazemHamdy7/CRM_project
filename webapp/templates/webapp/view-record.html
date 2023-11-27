@@ -25,7 +25,10 @@
 &nbsp;
 
 <a href="{% url 'update_record' record.id %}" class="btn btn-info">
-  Update record</a
+  Update Ticket</a
+>
+<a href="{% url 'delete_record' record.id %}" class="btn btn-danger">
+  Delete Ticket</a
 >
 
 &nbsp; {% endblock content %}
