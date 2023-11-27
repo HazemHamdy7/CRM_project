@@ -11,9 +11,22 @@
     <br />
 
     <form method="POST" autocomplete="off" action="">
-      {% csrf_token %} {{form|crispy}}
+      {% csrf_token %} {{form.first_name|as_crispy_field}}
       <br />
-
+      {{form.last_name|as_crispy_field}}
+      <br />
+      {{form.email|as_crispy_field}}
+      <br />
+      {{form.Phone|as_crispy_field}}
+      <br />
+      {{form.address|as_crispy_field}}
+      <br />
+      {{form.city|as_crispy_field}}
+      <br />
+      {{form.province|as_crispy_field}}
+      <br />
+      {{form.country|as_crispy_field}}
+      <br />
       <button type="submit" class="btn btn-primary">
         Create Ticket &nbsp;<i class="fa fa-check" aria-hidden="true"></i>
       </button>
