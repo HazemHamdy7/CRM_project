@@ -1,7 +1,6 @@
 
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, LoginForm, CreateRecordForm
-
+from .forms import CreateUserForm, LoginForm, CreateRecordForm, UpdateRecordForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
@@ -63,10 +62,10 @@ def dashboard(request):
     my_record = Record.objects.all()
 
     context = {'records': my_record}
-    return render(request, 'webapp/dashbord.html', context)
+    return render(request, 'webapp/dashboard.html', context)
 
 
-#!  - Create record
+# ?  - Create a record
 @login_required(login_url='my_login')
 def create_record(request):
     form = CreateRecordForm()
@@ -75,7 +74,39 @@ def create_record(request):
         if form .is_valid():
 
             form.save()
-        return redirect('dashbord')
+            return redirect('dashboard')
 
     context = {'form': form}
     return render(request, 'webapp/create-record.html', context)
+
+
+# ? - Updated a record
+@login_required(login_url='my_login')
+def update_record(request, pk):
+
+    record = Record.objects.get(id=pk)
+    form = UpdateRecordForm(instance=record)
+
+    if request.method == 'POST':
+        form = UpdateRecordForm(request.POST, instance=record)
+        if form .is_valid():
+
+            form.save()
+            return redirect('dashboard')
+    context = {'form': form}
+    return render(request, 'webapp/update-record.html', context)
+
+
+#  - Read / View a singler record
+@login_required(login_url='my_login')
+def singler_record(request, pk):
+
+    all_record = Record.objects.get(id=pk)
+
+    context = {'record': all_record}
+    return render(request, 'webapp/view-record.html', context)
+
+
+@login_required(login_url='my_login')
+def delete(request, pk):
+    pass
